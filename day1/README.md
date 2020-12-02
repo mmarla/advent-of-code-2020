@@ -26,3 +26,6 @@ The Elves in accounting are thankful for your help; one of them even offers you 
 Using the above example again, the three entries that sum to 2020 are `979`, `366`, and `675`. Multiplying them together produces the answer, `241861950`.
 
 _In your expense report, what is the product of the three entries that sum to 2020?_
+
+Notes:
+Explanation on the algorithm for part II - https://www.geeksforgeeks.org/find-a-triplet-that-sum-to-a-given-value/
