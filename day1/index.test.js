@@ -1,7 +1,7 @@
 const { findSumOfPair, findSumOfTriple } = require("./");
 const readFile = require("../helpers");
-const simpleInput = "./day1/simple-input.txt";
-const complexInput = "./day1/complex-input.txt";
+const simpleInput = "./day1/inputs/simple.txt";
+const complexInput = "./day1/inputs/complex.txt";
 
 test("sums a pair to 2020 - simple data set", async () => {
   const data = await readFile(simpleInput);
