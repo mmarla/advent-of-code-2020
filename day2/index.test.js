@@ -1,7 +1,7 @@
 const { findValidPasswords, findValidPasswordsByPosition } = require("./");
 const readFile = require("../helpers");
-const simpleInput = "./day2/simple-input.txt";
-const complexInput = "./day2/complex-input.txt";
+const simpleInput = "./day2/inputs/simple.txt";
+const complexInput = "./day2/inputs/complex.txt";
 
 test("finds the number of valid passwords - simple input", async () => {
   const data = await readFile(simpleInput);

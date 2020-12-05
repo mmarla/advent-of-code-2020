@@ -9,33 +9,25 @@ const getPassword = (str) => str.split(" ")[2];
 
 const findValidPasswords = (data) =>
   data.reduce((acc, e) => {
-    const range = getMinMax(e);
-    const letter = getLetter(e);
-    const password = getPassword(e);
-    const regex = new RegExp(letter, "g");
+    const [range, [letter], password] = e.split(" ");
+    const [min, max] = range.split("-");
+    const regex = new RegExp(letter.split(":"), "g");
     const instances = (password.match(regex) || []).length;
 
-    if (instances >= range.min && instances <= range.max) {
-      acc++;
-    }
-    return acc;
+    return instances >= min && instances <= max ? (acc += 1) : acc;
   }, 0);
 
 const findValidPasswordsByPosition = (data) =>
   data.reduce((acc, e) => {
-    const positions = getMinMax(e);
-    const letter = getLetter(e);
-    const passwordArr = getPassword(e).split("");
-    const firstPosition = passwordArr[positions.min - 1];
-    const secondPosition = passwordArr[positions.max - 1];
+    const [range, [letter], password] = e.split(" ");
+    const [min, max] = range.split("-");
+    const first = password.charAt(min - 1);
+    const second = password.charAt(max - 1);
 
-    if (firstPosition === letter && secondPosition !== letter) {
-      acc++;
-    } else if (firstPosition !== letter && secondPosition === letter) {
-      acc++;
-    }
-
-    return acc;
+    return (first === letter && second !== letter) ||
+      (first !== letter && second === letter)
+      ? (acc += 1)
+      : acc;
   }, 0);
 
 module.exports = { findValidPasswords, findValidPasswordsByPosition };
