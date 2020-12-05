@@ -36,11 +36,11 @@ const checkEyeColour = (str) => {
 const checkPassportId = (str) => (str.match(/^[0-9]{9}$/) ? true : false);
 
 module.exports = {
-  checkBirthYear,
-  checkIssueYear,
-  checkExpYear,
-  checkHeight,
-  checkHairColour,
-  checkEyeColour,
-  checkPassportId,
+  byr: checkBirthYear,
+  iyr: checkIssueYear,
+  eyr: checkExpYear,
+  hgt: checkHeight,
+  hcl: checkHairColour,
+  ecl: checkEyeColour,
+  pid: checkPassportId,
 };
