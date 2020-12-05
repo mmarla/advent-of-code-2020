@@ -1,7 +1,7 @@
 const { getHighest, getMissing } = require("./index");
 const readFile = require("../helpers");
-const simpleInput = "./day5/simple-input.txt";
-const complexInput = "./day5/complex-input.txt";
+const simpleInput = "./day5/inputs/simple.txt";
+const complexInput = "./day5/inputs/complex.txt";
 
 test("finds boarding passes - simple input", async () => {
   const data = await readFile(simpleInput);
