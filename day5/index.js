@@ -14,7 +14,7 @@ const chooseHighest = (range) => range.max - 1;
 
 const chooseLowest = (range) => range.min;
 
-const mapped = {
+const selection = {
   F: selectLower,
   L: selectLower,
   B: selectUpper,
@@ -33,7 +33,7 @@ const getPosition = (arr, max) =>
     (range, letter, i) => {
       if (i === arr.length - 1) return last[letter](range);
 
-      return { ...range, ...mapped[letter](range) };
+      return { ...range, ...selection[letter](range) };
     },
     { min: 0, max }
   );
@@ -41,8 +41,8 @@ const getPosition = (arr, max) =>
 const getList = (data) =>
   data
     .map((line) => {
-      const row = getPosition(line.substring(0, 7).split(""), 128);
-      const column = getPosition(line.substring(7).split(""), 8);
+      const row = getPosition(Array.from(line.substring(0, 7)), 128);
+      const column = getPosition(Array.from(line.substring(7)), 8);
 
       return row * 8 + column;
     })
