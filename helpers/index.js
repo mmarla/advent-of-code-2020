@@ -8,4 +8,18 @@ const readFile = async (path) => {
   return data.split("\n");
 };
 
-module.exports = readFile;
+const readFileToArrStr = (path) => fs.readFileSync(path, "utf-8").split("\n");
+
+const readFileToArrObj = (path) =>
+  fs
+    .readFileSync(path, "utf-8")
+    .split("\n\n")
+    .map((e) => e.split(/\s/))
+    .map((e) =>
+      e.reduce((acc, field) => {
+        const [key, value] = field.split(":");
+        return { ...acc, [key]: value };
+      }, {})
+    );
+
+module.exports = { readFile, readFileToArrObj, readFileToArrStr };
