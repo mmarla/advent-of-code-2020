@@ -1,27 +1,28 @@
 const expandMap = (arr) => arr.map((e, i) => (e += arr[i]));
 
+const isLastLine = (acc, data) => acc.y > data.length - 1;
+const isLastColumn = (acc) => acc.x >= acc.map[acc.y].length;
+const isTree = (acc) => acc.map[acc.y].charAt(acc.x) === "#";
+
 const countTheTrees = (data, { x, y }) =>
   data.reduce(
     (acc) => {
       acc.x += x;
       acc.y += y;
 
-      const end = acc.y > data.length - 1;
+      if (isLastLine(acc, data)) return acc;
 
-      if (end) return acc;
-
-      if (acc.x >= acc.mapCopy[acc.y].length) {
-        acc.mapCopy = expandMap(acc.mapCopy);
+      if (isLastColumn(acc)) {
+        acc.map = expandMap(acc.map);
       }
 
-      const tree = acc.mapCopy[acc.y].charAt(acc.x) === "#";
-
-      if (tree) {
+      if (isTree(acc)) {
         acc.trees++;
       }
+
       return acc;
     },
-    { trees: 0, x: 0, y: 0, mapCopy: data }
+    { trees: 0, x: 0, y: 0, map: data }
   ).trees;
 
 const multiplyTrees = (data, slopes) =>

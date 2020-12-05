@@ -1,7 +1,7 @@
 const { countTheTrees, multiplyTrees } = require("./");
 const readFile = require("../helpers");
-const simpleInput = "./day3/simple-input.txt";
-const complexInput = "./day3/complex-input.txt";
+const simpleInput = "./day3/inputs/simple.txt";
+const complexInput = "./day3/inputs/complex.txt";
 
 const slopes = [
   { x: 1, y: 1 },
