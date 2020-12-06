@@ -22,4 +22,22 @@ const readFileToArrObj = (path) =>
       }, {})
     );
 
-module.exports = { readFile, readFileToArrObj, readFileToArrStr };
+const readFileToSomethingElse = (path) =>
+  fs
+    .readFileSync(path, "utf-8")
+    .split("\n\n")
+    .map((e) => e.split(/\s/).join(""));
+
+const readFileToSomethingElseAgain = (path) =>
+  fs
+    .readFileSync(path, "utf-8")
+    .split("\n\n")
+    .map((e) => e.split(/\s/));
+
+module.exports = {
+  readFile,
+  readFileToArrObj,
+  readFileToArrStr,
+  readFileToSomethingElse,
+  readFileToSomethingElseAgain,
+};
